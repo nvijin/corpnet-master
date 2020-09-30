@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Corpnet.API", "Corpnet.API\Corpnet.API.csproj", "{E0EBE92F-0178-4774-B06D-6C1AD2846E3E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Corpnet.Data", "Corpnet.Data\Corpnet.Data.csproj", "{D5099736-68F9-49A5-A76F-DF8B42DBE4AC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Corpnet.Services", "Corpnet.Services\Corpnet.Services.csproj", "{93B7786B-1625-4A60-B9AB-8D813BFAF41D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Corpnet.Entities", "Corpnet.Entities\Corpnet.Entities.csproj", "{57A3F58B-124A-4BA7-9EAE-39D57DAB56A1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Corpnet.Common", "Corpnet.Common\Corpnet.Common.csproj", "{86375F2F-20F3-42E2-8C23-6154C0EC4956}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared-config", "shared-config", "{54ED75C7-521B-41DF-A2A6-F7963151FE99}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dev", "dev", "{087442A1-3368-467F-9BAA-BBEEF2D80B5B}"
+	ProjectSection(SolutionItems) = preProject
+		configmap-dev-corpnet.yaml = configmap-dev-corpnet.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "prod", "prod", "{104E39AD-37A6-49DD-A565-908F97A1B581}"
+	ProjectSection(SolutionItems) = preProject
+		configmap-prod-corpnet.yaml = configmap-prod-corpnet.yaml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0EBE92F-0178-4774-B06D-6C1AD2846E3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0EBE92F-0178-4774-B06D-6C1AD2846E3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0EBE92F-0178-4774-B06D-6C1AD2846E3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0EBE92F-0178-4774-B06D-6C1AD2846E3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5099736-68F9-49A5-A76F-DF8B42DBE4AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5099736-68F9-49A5-A76F-DF8B42DBE4AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5099736-68F9-49A5-A76F-DF8B42DBE4AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5099736-68F9-49A5-A76F-DF8B42DBE4AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93B7786B-1625-4A60-B9AB-8D813BFAF41D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93B7786B-1625-4A60-B9AB-8D813BFAF41D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93B7786B-1625-4A60-B9AB-8D813BFAF41D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93B7786B-1625-4A60-B9AB-8D813BFAF41D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57A3F58B-124A-4BA7-9EAE-39D57DAB56A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57A3F58B-124A-4BA7-9EAE-39D57DAB56A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57A3F58B-124A-4BA7-9EAE-39D57DAB56A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57A3F58B-124A-4BA7-9EAE-39D57DAB56A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86375F2F-20F3-42E2-8C23-6154C0EC4956}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86375F2F-20F3-42E2-8C23-6154C0EC4956}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86375F2F-20F3-42E2-8C23-6154C0EC4956}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86375F2F-20F3-42E2-8C23-6154C0EC4956}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{087442A1-3368-467F-9BAA-BBEEF2D80B5B} = {54ED75C7-521B-41DF-A2A6-F7963151FE99}
+		{104E39AD-37A6-49DD-A565-908F97A1B581} = {54ED75C7-521B-41DF-A2A6-F7963151FE99}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B26CEB80-9DAF-4BD6-9D88-B7099D71EBDC}
+	EndGlobalSection
+EndGlobal

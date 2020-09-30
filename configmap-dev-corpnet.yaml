@@ -1,0 +1,2 @@
+ConnectionStrings:
+  Default: "Server=148.72.206.209\\SQLEXPRESS;Database=Corpnet;User Id=sa;Password=technocit@2019"
