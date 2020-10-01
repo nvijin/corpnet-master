@@ -9,7 +9,7 @@ namespace Corpnet.Data.Interfaces
 {
    public interface IErrorLog
     {
-        Task InsertError(ErrorLog err, CancellationToken cancellationToken);
+        Task InsertError(ErrorLog err);
     }
    
 }

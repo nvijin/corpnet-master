@@ -159,8 +159,7 @@ namespace Corpnet.API.Controllers
             }
             catch (Exception ex)
             {
-                await _errorlogService.InsertError(Request.GetDisplayUrl(), ControllerContext.ActionDescriptor.ActionName.ToString(), ex.Message, ex.ToString(), cancellationToken).ConfigureAwait(false);
-                // StatusCode(500, ex.InnerException);
+                await _errorlogService.InsertError(Request.GetDisplayUrl(), ControllerContext.ActionDescriptor.ActionName.ToString(), ex.Message, ex.ToString()).ConfigureAwait(false);
                 return (ex.ToString());
             }
         }
@@ -179,7 +178,7 @@ namespace Corpnet.API.Controllers
             }
             catch (Exception ex)
             {
-                await _errorlogService.InsertError(Request.GetDisplayUrl(), ControllerContext.ActionDescriptor.ActionName.ToString(), ex.Message, ex.ToString(), cancellationToken).ConfigureAwait(false);
+                await _errorlogService.InsertError(Request.GetDisplayUrl(), ControllerContext.ActionDescriptor.ActionName.ToString(), ex.Message, ex.ToString()).ConfigureAwait(false);
                 return StatusCode(500, ex.InnerException);
             }
         }
@@ -194,7 +193,7 @@ namespace Corpnet.API.Controllers
             }
             catch(Exception ex)
             {
-                await _errorlogService.InsertError(Request.GetDisplayUrl(), ControllerContext.ActionDescriptor.ActionName.ToString(), ex.Message, ex.ToString(), cancellationToken).ConfigureAwait(false);
+                await _errorlogService.InsertError(Request.GetDisplayUrl(), ControllerContext.ActionDescriptor.ActionName.ToString(), ex.Message, ex.ToString()).ConfigureAwait(false);
                 // StatusCode(500, ex.InnerException);
                 return (ex.ToString());
             }

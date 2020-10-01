@@ -18,9 +18,9 @@ namespace Corpnet.Data.Repos
         {
             _ctx = ctx;
         }
-        public async Task InsertError(ErrorLog err, CancellationToken cancellationToken)
+        public async Task InsertError(ErrorLog err)
         {
-            await base.AddAsync(err, cancellationToken);
+            await base.AddError(err);
         }
       
     }

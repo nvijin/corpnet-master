@@ -21,7 +21,7 @@ namespace Corpnet.Services.Services
             this._repo = repo;
         }
 
-        public async Task InsertError(string Url, string MethodName, string ErrorType, string ErrorDetails, CancellationToken cancellationToken)
+        public async Task InsertError(string Url, string MethodName, string ErrorType, string ErrorDetails)
         {
             ErrorLog errorLog = new ErrorLog();
             errorLog.Url = Url;
@@ -30,9 +30,7 @@ namespace Corpnet.Services.Services
             errorLog.ErrorDetails = ErrorDetails;
             errorLog.CreatedDate = DateTime.Now;
             errorLog.IsDeleted = 0;
-            await _repo.InsertError(errorLog, cancellationToken).ConfigureAwait(false);
+            await _repo.InsertError(errorLog).ConfigureAwait(false);
         }
-
-      
     }
 }

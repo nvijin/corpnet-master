@@ -8,6 +8,6 @@ namespace Corpnet.Services.Interfaces
 {
     public interface IErrorlogService
     {
-        Task InsertError(string Url, string MethodName, string ErrorType, string ErrorDetails, CancellationToken cancellationToken);
+        Task InsertError(string Url, string MethodName, string ErrorType, string ErrorDetails);
     }
 }

@@ -136,6 +136,7 @@ namespace Corpnet.Data.Repos
         }
         #endregion
 
+
         #region Attach & Detach
         public virtual void Detach(TEntity entity)
         {
@@ -191,5 +192,16 @@ namespace Corpnet.Data.Repos
                 reference.Load();
         }
         #endregion
+
+        public virtual async Task AddError(TEntity entity,bool saveNow = true)
+        {
+            Assert.NotNull(entity, nameof(entity));
+            await Entities.AddAsync(entity).ConfigureAwait(false);
+            if (saveNow)
+                await DbContext.SaveChangesAsync().ConfigureAwait(false);
+        }
+
+
+
     }
 }

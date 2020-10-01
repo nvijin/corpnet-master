@@ -5,6 +5,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Corpnet.Data.Interfaces;
 using Corpnet.Data.Model;
+using Corpnet.Services.Interfaces;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -17,12 +19,12 @@ namespace Corpnet.API.Controllers
     public class RolesController : ControllerBase
     {
         private readonly IRoles _repo;
-        private readonly ILogger _logger;
+        private readonly IErrorlogService _errorlogService;
 
-        public RolesController(IRoles repo, ILogger<DirectoryController> logger)
+        public RolesController(IRoles repo, IErrorlogService errorlogService)
         {
             this._repo = repo;
-            this._logger = logger;
+            this._errorlogService = errorlogService;
         }
 
         // GET: api/<RolesController>
@@ -59,7 +61,7 @@ namespace Corpnet.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong: {ex }");
+               await _errorlogService.InsertError(Request.GetDisplayUrl(), ControllerContext.ActionDescriptor.ActionName.ToString(), ex.Message, ex.ToString()).ConfigureAwait(false);
                 return StatusCode(500, ex.InnerException);
             }
         }

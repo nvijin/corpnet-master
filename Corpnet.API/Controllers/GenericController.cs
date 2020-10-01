@@ -17,6 +17,7 @@ using Microsoft.Extensions.Configuration;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http.Extensions;
 
 namespace Corpnet.API.Controllers
 {
@@ -27,18 +28,17 @@ namespace Corpnet.API.Controllers
     {
         private readonly IGenericService _genService;
         private readonly IRecentLinksService _recLinks;
-        private readonly ILogger _logger;
         private readonly IHttpContextAccessor _httpContextAccessor;
         IConfiguration _configuration;
+        private readonly IErrorlogService _errorlogService;
 
-        public GenericController(IGenericService genService, IRecentLinksService recentLinks, ILogger<GenericController> logger, IHttpContextAccessor httpContextAccessor, IConfiguration configuration)
+        public GenericController(IGenericService genService, IRecentLinksService recentLinks, IErrorlogService errorlogService, IHttpContextAccessor httpContextAccessor, IConfiguration configuration)
         {
             this._genService = genService;
             this._recLinks = recentLinks;
-            this._logger = logger;
             _httpContextAccessor = httpContextAccessor;
             _configuration = configuration;
-
+            this._errorlogService = errorlogService;
         }
 
         [Authorize]
@@ -47,8 +47,6 @@ namespace Corpnet.API.Controllers
         {
             try
             {
-
-
                 string currentUserID = "";
                 //string rolename = "";
                 //string result = "User not found!!";
@@ -68,7 +66,7 @@ namespace Corpnet.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong: {ex }");
+                 _errorlogService.InsertError(Request.GetDisplayUrl(), ControllerContext.ActionDescriptor.ActionName.ToString(), ex.Message, ex.ToString()).ConfigureAwait(false);
                 return StatusCode(500, ex.InnerException);
             }
         }
@@ -177,7 +175,7 @@ namespace Corpnet.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong: {ex }");
+                await _errorlogService.InsertError(Request.GetDisplayUrl(), ControllerContext.ActionDescriptor.ActionName.ToString(), ex.Message, ex.ToString()).ConfigureAwait(false);
                 return StatusCode(500, ex.InnerException);
             }
         }
@@ -192,7 +190,7 @@ namespace Corpnet.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong: {ex }");
+                await _errorlogService.InsertError(Request.GetDisplayUrl(), ControllerContext.ActionDescriptor.ActionName.ToString(), ex.Message, ex.ToString()).ConfigureAwait(false);
                 return StatusCode(500, ex.InnerException);
             }
 
@@ -210,7 +208,7 @@ namespace Corpnet.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong: {ex }");
+                await _errorlogService.InsertError(Request.GetDisplayUrl(), ControllerContext.ActionDescriptor.ActionName.ToString(), ex.Message, ex.ToString()).ConfigureAwait(false);
                 return StatusCode(500, ex.InnerException);
             }
         }
@@ -228,7 +226,7 @@ namespace Corpnet.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong: {ex }");
+                await _errorlogService.InsertError(Request.GetDisplayUrl(), ControllerContext.ActionDescriptor.ActionName.ToString(), ex.Message, ex.ToString()).ConfigureAwait(false);
                 return StatusCode(500, ex.InnerException);
             }
         }
@@ -246,7 +244,7 @@ namespace Corpnet.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong: {ex }");
+                await _errorlogService.InsertError(Request.GetDisplayUrl(), ControllerContext.ActionDescriptor.ActionName.ToString(), ex.Message, ex.ToString()).ConfigureAwait(false);
                 return StatusCode(500, ex.InnerException);
             }
         }
@@ -264,7 +262,7 @@ namespace Corpnet.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong: {ex }");
+                await _errorlogService.InsertError(Request.GetDisplayUrl(), ControllerContext.ActionDescriptor.ActionName.ToString(), ex.Message, ex.ToString()).ConfigureAwait(false);
                 return StatusCode(500, ex.InnerException);
             }
         }
@@ -282,7 +280,7 @@ namespace Corpnet.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong: {ex }");
+                await _errorlogService.InsertError(Request.GetDisplayUrl(), ControllerContext.ActionDescriptor.ActionName.ToString(), ex.Message, ex.ToString()).ConfigureAwait(false);
                 return StatusCode(500, ex.InnerException);
             }
         }

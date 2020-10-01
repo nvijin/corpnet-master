@@ -17,13 +17,13 @@ namespace Corpnet.Services.Services
 
         private readonly IMapper _mapper;
         private readonly IGeneric _repo;
+        private readonly IErrorlogService _errorlogService;
 
-
-        public GenericService(IMapper mapper, IGeneric repo)
+        public GenericService(IMapper mapper, IGeneric repo, IErrorlogService errorlogService)
         {
             this._mapper = mapper;
             this._repo = repo;
-
+            this._errorlogService = errorlogService;
         }
 
 

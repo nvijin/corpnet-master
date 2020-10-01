@@ -8,6 +8,7 @@ using Corpnet.Data.Interfaces;
 using Corpnet.Entities;
 using Corpnet.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -19,13 +20,13 @@ namespace Corpnet.API.Controllers
     {
         private readonly IMapper mapper;
         private readonly IFavouriteService _service;
-        private readonly ILogger _logger;
+        private readonly IErrorlogService _errorlogService;
 
-        public FavouriteController(IMapper mapper, IFavouriteService service, ILogger<DirectoryController> logger)
+        public FavouriteController(IMapper mapper, IFavouriteService service,IErrorlogService errorlogService)
         {
             this.mapper = mapper;
             this._service = service;
-            this._logger = logger;
+            this._errorlogService = errorlogService;
         }
 
         [HttpGet("{LDAPUser_id}")]
@@ -38,7 +39,7 @@ namespace Corpnet.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong: {ex }");
+                await _errorlogService.InsertError(Request.GetDisplayUrl(), ControllerContext.ActionDescriptor.ActionName.ToString(), ex.Message, ex.ToString()).ConfigureAwait(false);
                 return StatusCode(500, ex.InnerException);
             }
         }
@@ -56,7 +57,7 @@ namespace Corpnet.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong: {ex }");
+                await _errorlogService.InsertError(Request.GetDisplayUrl(), ControllerContext.ActionDescriptor.ActionName.ToString(), ex.Message, ex.ToString()).ConfigureAwait(false);
                 return StatusCode(500, ex.InnerException);
             }
         }
